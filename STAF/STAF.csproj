@@ -60,6 +60,7 @@
     <Compile Include="Framework\BaseClasses\BaseSetup.cs" />
     <Compile Include="Framework\BaseClasses\Driver.cs" />
     <Compile Include="Framework\BaseClasses\Verify.cs" />
+    <Compile Include="Framework\HelperClasses\ScreenshotHelper.cs" />
     <Compile Include="Framework\Pages\PageClassTemplate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tests\TestCaseTemplate.cs" />

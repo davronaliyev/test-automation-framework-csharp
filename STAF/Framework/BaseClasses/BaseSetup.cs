@@ -7,6 +7,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
+using STAF.Framework.HelperClasses;
 using System;
 using System.Configuration;
 
@@ -68,18 +69,41 @@ namespace STAF.Framework.BaseClasses
                     Instance = new ChromeDriver(GetChromeOptions());
                     Instance.Navigate().GoToUrl(ConfigurationManager.AppSettings["URL"]);
 
+                    // Screenshot
+                    string screenName = ScreenshotHelper.TakeScreenshot();
+                    _test.Pass("Chrome browser is open.").AddScreenCaptureFromPath(@"C:\Users\daliyev\OneDrive - DSS\Projects\Git\STA-framework-with-csharp\Reports\screenshots\" + screenName);
 
-                    _test.Log(Status.Pass, "Chrome browser open");
 
 
 
 
                     break;
+
+
+
+
+
+
+
+
+
                 case "Firefox":
                     Instance = new FirefoxDriver();
                     Instance.Manage().Window.Maximize();
                     Instance.Navigate().GoToUrl(ConfigurationManager.AppSettings["URL"]);
                     break;
+
+
+
+
+
+
+
+
+
+
+
+
                 case "IE":
                     Instance = new InternetExplorerDriver(IEOptions);
                     Instance.Manage().Window.Maximize();
@@ -122,7 +146,7 @@ namespace STAF.Framework.BaseClasses
             _test.Log(logstatus, "Test ended with " + logstatus + stacktrace);
             _extent.Flush();
 
-
+            Instance.Close();
             Instance.Quit();
 
 
