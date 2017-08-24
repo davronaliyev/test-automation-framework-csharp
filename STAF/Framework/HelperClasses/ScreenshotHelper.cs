@@ -1,6 +1,7 @@
 ﻿using OpenQA.Selenium;
 using STAF.Framework.BaseClasses;
 using System;
+using System.Configuration;
 
 namespace STAF.Framework.HelperClasses
 {
@@ -8,7 +9,8 @@ namespace STAF.Framework.HelperClasses
     {
         internal static string TakeScreenshot()
         {
-            string screenshotPath = @"C:\Users\daliyev\OneDrive - DSS\Projects\Git\STA-framework-with-csharp\Reports\screenshots\";
+            //string screenshotPath = @"C:\Users\daliyev\OneDrive - DSS\Projects\Git\STA-framework-with-csharp\Reports\screenshots\";
+            var screenshotPath = AppDomain.CurrentDomain.BaseDirectory + ConfigurationManager.AppSettings["ScreenshotPath"];
             string now = DateTime.Now.ToString("MMddyyyhhmm");
             string screenName = now + "Screenshot.png";
 

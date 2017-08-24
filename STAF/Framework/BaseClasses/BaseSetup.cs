@@ -19,11 +19,7 @@ namespace STAF.Framework.BaseClasses
                 case "Chrome":
                     Instance = new ChromeDriver(GetChromeOptions());
                     Instance.Navigate().GoToUrl(ConfigurationManager.AppSettings["URL"]);
-
-                    // Screenshot
-                    string screenName = ScreenshotHelper.TakeScreenshot();
-                    _test.Pass("Chrome browser is open.").AddScreenCaptureFromPath(@"C:\Users\daliyev\OneDrive - DSS\Projects\Git\STA-framework-with-csharp\Reports\screenshots\" + screenName);
-
+                    _test.Pass("Chrome browser is open.");
                     break;
                 case "Firefox":
                     Instance = new FirefoxDriver();

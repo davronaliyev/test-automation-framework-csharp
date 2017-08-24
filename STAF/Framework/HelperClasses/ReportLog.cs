@@ -2,6 +2,8 @@
 using AventStack.ExtentReports.Reporter;
 using NUnit.Framework;
 using NUnit.Framework.Interfaces;
+using System;
+using System.Configuration;
 
 namespace STAF.Framework.HelperClasses
 {
@@ -16,7 +18,7 @@ namespace STAF.Framework.HelperClasses
             [OneTimeSetUp]
             protected void Setup()
             {
-                var dir = TestContext.CurrentContext.TestDirectory + "\\";
+                var dir = AppDomain.CurrentDomain.BaseDirectory + ConfigurationManager.AppSettings["ReportPath"];
                 var fileName = this.GetType().ToString() + ".html";
                 var htmlReporter = new ExtentHtmlReporter(dir + fileName);
 
@@ -63,7 +65,6 @@ namespace STAF.Framework.HelperClasses
                 }
 
                 _test.Log(logstatus, "Test ended with " + logstatus + stacktrace);
-                _extent.Flush();
             }
 
 

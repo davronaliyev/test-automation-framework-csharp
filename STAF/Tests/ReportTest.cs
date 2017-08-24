@@ -2,6 +2,8 @@
 using NUnit.Framework;
 using STAF.Framework.BaseClasses;
 using STAF.Framework.HelperClasses;
+using System;
+using System.Configuration;
 
 namespace STAF.Tests
 {
@@ -9,29 +11,20 @@ namespace STAF.Tests
     class ReportTest : BaseSetup
     {
         [Test]
-        public void ReportTest01()
+        public void DemoTest()
         {
-            _test.Info("Step 1: Do something.");
-            _test.Info("Step 2: Do something.");
-            _test.Info("Step 3: Do something.");
+            _test.Info("<span class=\"label white-text blue\">" +
+                "Step 1: </span> Enter valid user name.");
+            _test.Pass("Able to enter user name.");
+            _test.Info("<span class=\"label white-text blue\">" +
+                "Step 2: </span> Enter valid password.");
+            _test.Warning("Able to enter password.");
+            _test.Info("<span class=\"label white-text blue\">" +
+                "Step 3: </span> Click Login button.");
+            _test.Fail("Able to click the button.", MediaEntityBuilder.CreateScreenCaptureFromPath(AppDomain.CurrentDomain.BaseDirectory + ConfigurationManager.AppSettings["ScreenshotPath"] + ScreenshotHelper.TakeScreenshot()).Build());
 
-        }
-        [Test]
-        public void ReportTest02()
-        {
-            _test.Info("<span class=\"label white-text blue\">Step 1: </span>Login with valid username and password.");
-            _test.Warning("details", MediaEntityBuilder.CreateScreenCaptureFromPath(@"C:\Users\daliyev\OneDrive - DSS\Projects\Git\STA-framework-with-csharp\Reports\screenshots\" + ScreenshotHelper.TakeScreenshot()).Build());
-            _test.Info("<span class=\"label white-text blue\">Step 2: Login with valid username and password.</span>");
-            _test.Warning("details", MediaEntityBuilder.CreateScreenCaptureFromPath(@"C:\Users\daliyev\OneDrive - DSS\Projects\Git\STA-framework-with-csharp\Reports\screenshots\" + ScreenshotHelper.TakeScreenshot()).Build());
-            _test.Info("<span class=\"label white-text blue\">Step 3: Login with valid username and password.</span>");
-            _test.Warning("details", MediaEntityBuilder.CreateScreenCaptureFromPath(@"C:\Users\daliyev\OneDrive - DSS\Projects\Git\STA-framework-with-csharp\Reports\screenshots\" + ScreenshotHelper.TakeScreenshot()).Build());
-
-
-        }
-        [Test]
-        public void ReportTest03()
-        {
-            _test.Pass("Test 3");
+            //Driver.InsertText(By.XPath("//input[@ng-model='user.firstName']"), "Test123");
+            //Instance.FindElement(By.XPath("//input[@ng-model='user.firstName']")).SendKeys("Test123");
         }
 
     }
