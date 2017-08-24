@@ -19,14 +19,12 @@ namespace STAF.Tests
         [Test]
         public void ReportTest02()
         {
-            _test.Info("Step 1");
+            _test.Info("<span class=\"label white-text blue\">Step 1: </span>Login with valid username and password.");
             _test.Warning("details", MediaEntityBuilder.CreateScreenCaptureFromPath(@"C:\Users\daliyev\OneDrive - DSS\Projects\Git\STA-framework-with-csharp\Reports\screenshots\" + ScreenshotHelper.TakeScreenshot()).Build());
-            _test.Info("Step 2");
+            _test.Info("<span class=\"label white-text blue\">Step 2: Login with valid username and password.</span>");
             _test.Warning("details", MediaEntityBuilder.CreateScreenCaptureFromPath(@"C:\Users\daliyev\OneDrive - DSS\Projects\Git\STA-framework-with-csharp\Reports\screenshots\" + ScreenshotHelper.TakeScreenshot()).Build());
-            _test.Info("Step 3");
+            _test.Info("<span class=\"label white-text blue\">Step 3: Login with valid username and password.</span>");
             _test.Warning("details", MediaEntityBuilder.CreateScreenCaptureFromPath(@"C:\Users\daliyev\OneDrive - DSS\Projects\Git\STA-framework-with-csharp\Reports\screenshots\" + ScreenshotHelper.TakeScreenshot()).Build());
-
-
 
 
         }
