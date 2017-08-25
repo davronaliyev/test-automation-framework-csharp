@@ -10,7 +10,7 @@ namespace STAF.Tests
     [TestFixture]
     class ReportTest : BaseSetup
     {
-        [Test]
+        //[Test]
         public void DemoTest()
         {
             _test.Info("<span class=\"label white-text blue\">" +
@@ -26,6 +26,44 @@ namespace STAF.Tests
             //Driver.InsertText(By.XPath("//input[@ng-model='user.firstName']"), "Test123");
             //Instance.FindElement(By.XPath("//input[@ng-model='user.firstName']")).SendKeys("Test123");
         }
+
+        [Test]
+        public void TestCase_01()
+        {
+            // Step 1: Do something!
+            TestStep("Step 1", "Do something!");
+            // Step 2: Do something!
+            TestStep("Step 2", "Do something!");
+            // Step 3: Do something!
+            TestStep("Step 3", "Click login button.");
+            // Step 4: Do something!
+            TestStep("Step 4", "Click login button.");
+        }
+        [Test]
+        public void TestCase_02()
+        {
+            // Step 1: Do something!
+            TestStep("Step 1", "Do something!");
+            // Step 2: Do something!
+            TestStep("Step 2", "Do something!");
+            // Step 3: Do something!
+            TestStep("Step 3", "Click login button.");
+            // Step 4: Do something!
+            TestStep("Step 4", "Click login button.");
+        }
+        [Test]
+        public void TestCase_03()
+        {
+            // Step 1: Do something!
+            TestStep("Step 1", "Do something!");
+            // Step 2: Do something!
+            TestStep("Step 2", "Do something!");
+            // Step 3: Do something!
+            TestStep("Step 3", "Click login button.");
+            // Step 4: Do something!
+            TestStep("Step 4", "Click login button.");
+        }
+
 
     }
 }

@@ -8,7 +8,7 @@ using System.Configuration;
 
 namespace STAF.Framework.BaseClasses
 {
-    class BaseSetup : ReportLog.Base
+    class BaseSetup : ReportHelper.Base
     {
         internal static IWebDriver Instance { get; set; }
         [SetUp]
@@ -19,7 +19,6 @@ namespace STAF.Framework.BaseClasses
                 case "Chrome":
                     Instance = new ChromeDriver(GetChromeOptions());
                     Instance.Navigate().GoToUrl(ConfigurationManager.AppSettings["URL"]);
-                    _test.Pass("Chrome browser is open.");
                     break;
                 case "Firefox":
                     Instance = new FirefoxDriver();

@@ -59,7 +59,7 @@
     <Compile Include="Framework\BaseClasses\BaseSetup.cs" />
     <Compile Include="Framework\BaseClasses\Driver.cs" />
     <Compile Include="Framework\BaseClasses\Verify.cs" />
-    <Compile Include="Framework\HelperClasses\ReportLog.cs" />
+    <Compile Include="Framework\HelperClasses\ReportHelper.cs" />
     <Compile Include="Framework\HelperClasses\ScreenshotHelper.cs" />
     <Compile Include="Framework\Pages\PageClassTemplate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -81,7 +81,7 @@
     <Error Condition="!Exists('packages\Selenium.WebDriver.IEDriver.3.5.1\build\Selenium.WebDriver.IEDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Selenium.WebDriver.IEDriver.3.5.1\build\Selenium.WebDriver.IEDriver.targets'))" />
     <Error Condition="!Exists('packages\Selenium.WebDriver.ChromeDriver.2.31.0\build\Selenium.WebDriver.ChromeDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Selenium.WebDriver.ChromeDriver.2.31.0\build\Selenium.WebDriver.ChromeDriver.targets'))" />
     <Error Condition="!Exists('packages\Selenium.Firefox.WebDriver.0.18.0\build\Selenium.Firefox.WebDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Selenium.Firefox.WebDriver.0.18.0\build\Selenium.Firefox.WebDriver.targets'))" />
- </Target>
+  </Target>
   <Import Project="packages\Selenium.WebDriver.ChromeDriver.2.31.0\build\Selenium.WebDriver.ChromeDriver.targets" Condition="Exists('packages\Selenium.WebDriver.ChromeDriver.2.31.0\build\Selenium.WebDriver.ChromeDriver.targets')" />
   <Import Project="packages\Selenium.Firefox.WebDriver.0.18.0\build\Selenium.Firefox.WebDriver.targets" Condition="Exists('packages\Selenium.Firefox.WebDriver.0.18.0\build\Selenium.Firefox.WebDriver.targets')" />
 </Project>

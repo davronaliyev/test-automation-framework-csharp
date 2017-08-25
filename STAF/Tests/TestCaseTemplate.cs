@@ -6,7 +6,7 @@ namespace STAF.Tests
     [TestFixture]
     class TestCaseTemplate : BaseSetup
     {
-        [Test]
+        //[Test]
         public void TestCase_01()
         {
             // Step 1:
