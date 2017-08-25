@@ -31,10 +31,9 @@ namespace STAF.Tests
         [Test]
         public void TestCase_01()
         {
-            TestStep("Step 1", "Verify the page header.");
-            Verify.AreEqual("Fee Basis Claims Systemm", PageClassTemplate.pageHeader);
-            TestStep("Step 2", "Verify the page header again.");
-            Verify.AreEqual("Fee Basis Claims System", PageClassTemplate.pageHeader);
+            TestStep("Step 1", "Verify page elements.");
+            PageClassTemplate.VerifyPageElements();
+            TestStep("Step 2", "Verify the page header.");
         }
         [Test]
         public void TestCase_02()

@@ -41,7 +41,7 @@ namespace STAF.Framework.HelperClasses
                 // report or build name
                 htmlReporter.Configuration().ReportName = ConfigurationManager.AppSettings["ReportTitle"] + " &nbsp|&nbsp Build - " + ConfigurationManager.AppSettings["ProductVersion"];
                 // add custom css
-                htmlReporter.Configuration().CSS = @"td{font-size: 16px} .test-steps th:nth-child(2), tr.log > td:nth-child(2), .node-steps th:nth-child(2), .node-steps td:nth-child(2) { display: none; }";
+                htmlReporter.Configuration().CSS = @".step-details > img { float: right; } td{font-size: 16px} .test-steps th:nth-child(2), tr.log > td:nth-child(2), .node-steps th:nth-child(2), .node-steps td:nth-child(2) { display: none; }";
                 // add custom javascript
                 //htmlReporter.Configuration().JS = "var lastColHeader = Array.prototype.slice.call(document.querySelectorAll('th:Timestamp', '#btt-ranges'), 0);var lastColCells = Array.prototype.slice.call(document.querySelectorAll('td:last-child', '#btt-ranges'), 0).concat(lastColHeader);lastColCells.forEach(function(cell) {cell.style.display = 'none';});";
 

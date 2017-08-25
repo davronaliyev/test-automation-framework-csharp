@@ -62,5 +62,21 @@ namespace STAF.Framework.BaseClasses
                 throw new NoSuchElementException("Unable to find element, locator: \"" + locator.ToString() + "\".");
             }
         }
+        internal static IWebElement WaitForElementExists(By locator)
+        {
+            //  An expectation for checking that an element is present on the DOM of a page. 
+            //  This does not necessarily mean that the element is visible.
+            try
+            {
+                wait.PollingInterval = TimeSpan.FromSeconds(2);
+                wait.IgnoreExceptionTypes(typeof(NoSuchElementException), typeof(ElementNotVisibleException));
+                wait.Until(ExpectedConditions.ElementExists(locator));
+                return Instance.FindElement(locator);
+            }
+            catch (Exception)
+            {
+                throw new NoSuchElementException("Unable to find element, locator: \"" + locator.ToString() + "\".");
+            }
+        }
     }
 }
