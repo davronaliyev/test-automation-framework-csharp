@@ -13,8 +13,8 @@ namespace STAF.Framework.HelperClasses
         [SetUpFixture]
         public abstract class Base
         {
-            protected ExtentReports _extent;
-            protected ExtentTest _test;
+            protected static ExtentReports _extent;
+            protected static ExtentTest _test;
 
             [OneTimeSetUp]
             protected void Setup()
@@ -85,28 +85,31 @@ namespace STAF.Framework.HelperClasses
 
                 _test.Log(logstatus, "Test ended with " + logstatus + stacktrace);
             }
-            public void TestStep(string status, string stepName, string description)
+            public static void TestStep(string status, string stepName, string description)
             {
                 switch (status)
                 {
                     case "Info":
-                        _test.Info("<span class=\"label white-text blue\">" + stepName + "</span>" + description);
+                        _test.Info("<span class=\"label white-text blue\">" + stepName + "</span> &nbsp" + description);
                         break;
                     case "Warning":
-                        _test.Warning("<span class=\"label white-text blue\">" + stepName + "</span>" + description);
+                        _test.Warning("<span class=\"label white-text blue\">" + stepName + "</span> &nbsp" + description);
                         break;
                     case "Fail":
-                        _test.Fail("<span class=\"label white-text blue\">" + stepName + "</span>" + description);
+                        _test.Fail("<span class=\"label white-text blue\">" + stepName + "</span> &nbsp" + description);
                         break;
                     case "Skip":
-                        _test.Skip("<span class=\"label white-text blue\">" + stepName + "</span>" + description);
+                        _test.Skip("<span class=\"label white-text blue\">" + stepName + "</span> &nbsp" + description);
+                        break;
+                    case "Pass":
+                        _test.Pass("<span class=\"label white-text blue\">" + stepName + "</span> &nbsp" + description);
                         break;
                     default:
-                        _test.Info("<span class=\"label white-text blue\">" + stepName + "</span>" + description);
+                        _test.Info("<span class=\"label white-text blue\">" + stepName + "</span> &nbsp" + description);
                         break;
                 }
             }
-            public void TestStep(string stepName, string description)
+            internal static void TestStep(string stepName, string description)
             {
                 _test.Info("<span class=\"label white-text blue\">" + stepName + "</span> &nbsp" + description);
             }

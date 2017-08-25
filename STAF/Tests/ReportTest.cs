@@ -2,6 +2,7 @@
 using NUnit.Framework;
 using STAF.Framework.BaseClasses;
 using STAF.Framework.HelperClasses;
+using STAF.Framework.Pages;
 using System;
 using System.Configuration;
 
@@ -30,14 +31,10 @@ namespace STAF.Tests
         [Test]
         public void TestCase_01()
         {
-            // Step 1: Do something!
-            TestStep("Step 1", "Do something!");
-            // Step 2: Do something!
-            TestStep("Step 2", "Do something!");
-            // Step 3: Do something!
-            TestStep("Step 3", "Click login button.");
-            // Step 4: Do something!
-            TestStep("Step 4", "Click login button.");
+            TestStep("Step 1", "Verify the page header.");
+            Verify.AreEqual("Fee Basis Claims Systemm", PageClassTemplate.pageHeader);
+            TestStep("Step 2", "Verify the page header again.");
+            Verify.AreEqual("Fee Basis Claims System", PageClassTemplate.pageHeader);
         }
         [Test]
         public void TestCase_02()
