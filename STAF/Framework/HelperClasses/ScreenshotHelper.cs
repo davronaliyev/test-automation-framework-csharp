@@ -2,6 +2,7 @@
 using STAF.Framework.BaseClasses;
 using System;
 using System.Configuration;
+using System.IO;
 
 namespace STAF.Framework.HelperClasses
 {
@@ -9,8 +10,8 @@ namespace STAF.Framework.HelperClasses
     {
         internal static string TakeScreenshot()
         {
-            //string screenshotPath = @"C:\Users\daliyev\OneDrive - DSS\Projects\Git\STA-framework-with-csharp\Reports\screenshots\";
             var screenshotPath = AppDomain.CurrentDomain.BaseDirectory + ConfigurationManager.AppSettings["ScreenshotPath"];
+            Directory.CreateDirectory(screenshotPath);
             string now = DateTime.Now.ToString("MMddyyyhhmm");
             string screenName = now + "Screenshot.png";
 

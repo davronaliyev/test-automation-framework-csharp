@@ -10,6 +10,7 @@ namespace STAF.Framework.BaseClasses
     class Verify : BaseSetup
     {
         private static IWebElement element;
+
         internal static void AreEqual(string expectedElement, By locator)
         {
             try
@@ -21,8 +22,14 @@ namespace STAF.Framework.BaseClasses
             catch (AssertionException)
             {
                 string actualElement = Instance.FindElement(locator).Text.Trim();
-                _test.Fail("<span class=\"label white-text red\">Fail</span> &nbsp Expected: &nbsp<b>" + expectedElement + "</b>&nbsp&nbsp-&nbsp&nbsp Actual: &nbsp<b>" + element.Text + "</b>.",
-                    MediaEntityBuilder.CreateScreenCaptureFromPath(AppDomain.CurrentDomain.BaseDirectory + ConfigurationManager.AppSettings["ScreenshotPath"] + ScreenshotHelper.TakeScreenshot()).Build());
+                _test.Fail("<span class=\"label white-text red\">Fail</span> &nbsp Expected: &nbsp<b>" + expectedElement + "</b>&nbsp but actual is: &nbsp&nbsp<b>" + element.Text + "</b>",
+                MediaEntityBuilder.CreateScreenCaptureFromPath(AppDomain.CurrentDomain.BaseDirectory + ConfigurationManager.AppSettings["ScreenshotPath"] + ScreenshotHelper.TakeScreenshot()).Build());
+            }
+            catch (NoSuchElementException)
+            {
+                _test.Fail("<span class=\"label white-text red\">Fail</span>&nbsp Unable to locate <b>" + element.Text + "</b>&nbsp an element.",
+                MediaEntityBuilder.CreateScreenCaptureFromPath(AppDomain.CurrentDomain.BaseDirectory + ConfigurationManager.AppSettings["ScreenshotPath"] + ScreenshotHelper.TakeScreenshot()).Build());
+
             }
         }
 
@@ -31,13 +38,33 @@ namespace STAF.Framework.BaseClasses
             try
             {
                 element = Driver.WaitForElementExists(locator);
-                _test.Pass("<span class=\"label white-text green\">Pass</span>&nbsp &nbsp<b>" + label + "</b> verified.");
+                _test.Pass("<span class=\"label white-text green\">Pass</span>&nbsp &nbsp<b>" + label + "</b>&nbsp verified.");
             }
-            catch (Exception)
+            catch (AssertionException)
             {
-                _test.Fail("<span class=\"label white-text red\">Fail</span>&nbsp&nbsp<b>" + label + "</b> could <u>not</u> be verified.",
+                _test.Fail("<span class=\"label white-text red\">Fail</span>&nbsp&nbsp<b>" + label + "</b>&nbsp could <u>not</u> be verified.", MediaEntityBuilder.CreateScreenCaptureFromPath(AppDomain.CurrentDomain.BaseDirectory + ConfigurationManager.AppSettings["ScreenshotPath"] + ScreenshotHelper.TakeScreenshot()).Build());
+            }
+            catch (NoSuchElementException)
+            {
+                _test.Fail("<span class=\"label white-text red\">Fail</span>&nbsp Unable to locate <b>" + label + "</b>&nbsp an element.",
                 MediaEntityBuilder.CreateScreenCaptureFromPath(AppDomain.CurrentDomain.BaseDirectory + ConfigurationManager.AppSettings["ScreenshotPath"] + ScreenshotHelper.TakeScreenshot()).Build());
+            }
+        }
 
+        internal static void IsButtonActive(By locator)
+        {
+            try
+            {
+                element = Driver.WaitForElementToBeClickable(locator);
+                _test.Pass("<span class=\"label white-text green\">Pass</span>&nbsp &nbsp<b>" + element.Text + "</b> &nbsp button is active.");
+            }
+            catch (AssertionException)
+            {
+                _test.Fail("<span class=\"label white-text red\">Fail</span>&nbsp&nbsp<b>" + element.Text + "</b> button is <u>not</u> active.", MediaEntityBuilder.CreateScreenCaptureFromPath(AppDomain.CurrentDomain.BaseDirectory + ConfigurationManager.AppSettings["ScreenshotPath"] + ScreenshotHelper.TakeScreenshot()).Build());
+            }
+            catch (NoSuchElementException)
+            {
+                _test.Fail("<span class=\"label white-text red\">Fail</span>&nbsp&nbsp Unable to locate <b>" + element.Text + "</b> button.", MediaEntityBuilder.CreateScreenCaptureFromPath(AppDomain.CurrentDomain.BaseDirectory + ConfigurationManager.AppSettings["ScreenshotPath"] + ScreenshotHelper.TakeScreenshot()).Build());
             }
         }
     }

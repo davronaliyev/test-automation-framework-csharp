@@ -7,7 +7,7 @@ namespace STAF.Framework.BaseClasses
     class Driver : BaseSetup
     {
         private static IWebElement element;
-        private static WebDriverWait wait = new WebDriverWait(Instance, TimeSpan.FromSeconds(20));
+        private static WebDriverWait wait = new WebDriverWait(Instance, TimeSpan.FromSeconds(2));
 
         internal static void ClickOn(By locator)
         {

@@ -5,6 +5,7 @@ using NUnit.Framework;
 using NUnit.Framework.Interfaces;
 using System;
 using System.Configuration;
+using System.IO;
 
 namespace STAF.Framework.HelperClasses
 {
@@ -20,19 +21,17 @@ namespace STAF.Framework.HelperClasses
             protected void Setup()
             {
                 // Setup up report directory from App.config file.
-                var dir = AppDomain.CurrentDomain.BaseDirectory + ConfigurationManager.AppSettings["ReportPath"];
-                var fileName = this.GetType().ToString() + ".html";
-                var htmlReporter = new ExtentHtmlReporter(dir + fileName);
-
+                var reportDir = AppDomain.CurrentDomain.BaseDirectory + ConfigurationManager.AppSettings["ReportPath"];
+                Directory.CreateDirectory(reportDir);
+                var fileName = this.GetType().ToString() + "Test Report.html";
+                var htmlReporter = new ExtentHtmlReporter(reportDir + ConfigurationManager.AppSettings["ReportTitle"] + DateTime.Now.ToString(" MM-dd-yyyy H-mm") + ".html");
                 _extent = new ExtentReports();
                 _extent.AttachReporter(htmlReporter);
 
-
-
+                // Report Configurations
 
                 //htmlReporter.LoadConfig(AppDomain.CurrentDomain.BaseDirectory + @"..\..\packages\ExtentReports.3.0.2\lib\extent-config.xml");
 
-                // Report Configurations
                 // make the charts visible on report open
                 htmlReporter.Configuration().ChartVisibilityOnOpen = false;
                 htmlReporter.Configuration().ChartLocation = ChartLocation.Top;
@@ -44,8 +43,6 @@ namespace STAF.Framework.HelperClasses
                 htmlReporter.Configuration().CSS = @".step-details > img { float: right; } td{font-size: 16px} .test-steps th:nth-child(2), tr.log > td:nth-child(2), .node-steps th:nth-child(2), .node-steps td:nth-child(2) { display: none; }";
                 // add custom javascript
                 //htmlReporter.Configuration().JS = "var lastColHeader = Array.prototype.slice.call(document.querySelectorAll('th:Timestamp', '#btt-ranges'), 0);var lastColCells = Array.prototype.slice.call(document.querySelectorAll('td:last-child', '#btt-ranges'), 0).concat(lastColHeader);lastColCells.forEach(function(cell) {cell.style.display = 'none';});";
-
-
 
             }
             [OneTimeTearDown]
