@@ -26,7 +26,7 @@ namespace STAF.Framework.HelperClasses
                 //}
 
             }
-            catch (NoSuchElementException e)
+            catch (NoSuchElementException)
             {
                 //ReportHelper.WarningLog("Exception occurred during Drag and Drop. Expected element is not present: <br>" + e.Message);
             }
