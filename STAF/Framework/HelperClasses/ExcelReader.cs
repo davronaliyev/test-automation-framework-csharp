@@ -18,6 +18,8 @@ namespace STAF.Framework.HelperClasses
             Excel.Range range;
             xlApp = new Excel.Application();
             xlWorkBook = xlApp.Workbooks.Open(excelPath, 0, true, 5, "", "", true, Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
+
+
             xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(_sheetNumber);
             range = xlWorkSheet.UsedRange;
             int columnNumber = _columnNumber;

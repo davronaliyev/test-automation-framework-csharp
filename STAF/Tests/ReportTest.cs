@@ -8,10 +8,6 @@ namespace STAF.Tests
     [TestFixture]
     class ReportTest : BaseSetup
     {
-
-
-
-
         [Test]
         public void TestCase_01()
         {
