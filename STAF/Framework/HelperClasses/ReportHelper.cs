@@ -16,6 +16,7 @@ namespace STAF.Framework.HelperClasses
         {
             protected static ExtentReports _extent;
             protected static ExtentTest _test;
+            private string _time = DateTime.Now.ToString(" MM-dd-yyyy H-mm");
 
             [OneTimeSetUp]
             protected void Setup()
@@ -23,8 +24,8 @@ namespace STAF.Framework.HelperClasses
                 // Setup up report directory from App.config file.
                 var reportDir = AppDomain.CurrentDomain.BaseDirectory + ConfigurationManager.AppSettings["ReportPath"];
                 Directory.CreateDirectory(reportDir);
-                var fileName = this.GetType().ToString() + "Test Report.html";
-                var htmlReporter = new ExtentHtmlReporter(reportDir + ConfigurationManager.AppSettings["ReportTitle"] + DateTime.Now.ToString(" MM-dd-yyyy H-mm") + ".html");
+                var fileName = (reportDir + ConfigurationManager.AppSettings["ReportTitle"] + _time + ".html");
+                var htmlReporter = new ExtentHtmlReporter(fileName);
                 _extent = new ExtentReports();
                 _extent.AttachReporter(htmlReporter);
 
@@ -49,6 +50,8 @@ namespace STAF.Framework.HelperClasses
             protected void TearDown()
             {
                 _extent.Flush();
+                // Open test report
+                System.Diagnostics.Process.Start(AppDomain.CurrentDomain.BaseDirectory + ConfigurationManager.AppSettings["ReportPath"] + ConfigurationManager.AppSettings["ReportTitle"] + _time + ".html");
             }
             [SetUp]
             public void BeforeTest()
