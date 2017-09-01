@@ -1,45 +1,23 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
+using STAF.Framework.BaseClasses;
 using System;
 
-namespace STAF.Framework.BaseClasses
+namespace STAF.Framework.HelperClasses
 {
-    class Driver : BaseSetup
+    class WaitHelper
     {
-        private static IWebElement element;
-
-        internal static void ClickOn(By locator)
-        {
-            element = WaitForElementToBeClickable(locator);
-            element.Click();
-        }
-        internal static void InsertText(By locator, string text)
-        {
-            element = WaitForElementIsVisible(locator);
-            element.Clear();
-            element.SendKeys(text);
-        }
-        internal static void SelectFromDropdown(By locator, string option)
-        {
-            var select = new SelectElement(WaitForElementIsVisible(locator));
-            select.SelectByText(option);
-        }
-        internal static void NavigateToUrl(string url)
-        {
-            Instance.Navigate().GoToUrl(url);
-        }
-
         // Wait for conditions.
         internal static IWebElement WaitForElementToBeClickable(By locator)
         {
             //     An expectation for checking an element is visible and enabled such that you can click it.
             try
             {
-                WebDriverWait wait = new WebDriverWait(Instance, TimeSpan.FromSeconds(20));
+                WebDriverWait wait = new WebDriverWait(BaseSetup.Instance, TimeSpan.FromSeconds(20));
                 wait.PollingInterval = TimeSpan.FromSeconds(2);
                 wait.IgnoreExceptionTypes(typeof(NoSuchElementException), typeof(ElementNotVisibleException));
                 wait.Until(ExpectedConditions.ElementToBeClickable(locator));
-                return Instance.FindElement(locator);
+                return BaseSetup.Instance.FindElement(locator);
             }
             catch (Exception)
             {
@@ -52,11 +30,11 @@ namespace STAF.Framework.BaseClasses
             //     Visibility means that the element is not only displayed but also has a height and width that is greater than 0.
             try
             {
-                WebDriverWait wait = new WebDriverWait(Instance, TimeSpan.FromSeconds(20));
+                WebDriverWait wait = new WebDriverWait(BaseSetup.Instance, TimeSpan.FromSeconds(20));
                 wait.PollingInterval = TimeSpan.FromSeconds(2);
                 wait.IgnoreExceptionTypes(typeof(NoSuchElementException), typeof(ElementNotVisibleException));
                 wait.Until(ExpectedConditions.ElementIsVisible(locator));
-                return Instance.FindElement(locator);
+                return BaseSetup.Instance.FindElement(locator);
             }
             catch (Exception)
             {
@@ -69,11 +47,11 @@ namespace STAF.Framework.BaseClasses
             //  This does not necessarily mean that the element is visible.
             try
             {
-                WebDriverWait wait = new WebDriverWait(Instance, TimeSpan.FromSeconds(20));
+                WebDriverWait wait = new WebDriverWait(BaseSetup.Instance, TimeSpan.FromSeconds(20));
                 wait.PollingInterval = TimeSpan.FromSeconds(2);
                 wait.IgnoreExceptionTypes(typeof(NoSuchElementException), typeof(ElementNotVisibleException));
                 wait.Until(ExpectedConditions.ElementExists(locator));
-                return Instance.FindElement(locator);
+                return BaseSetup.Instance.FindElement(locator);
             }
             catch (Exception)
             {
