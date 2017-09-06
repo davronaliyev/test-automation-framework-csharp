@@ -1,11 +1,7 @@
-﻿using AventStack.ExtentReports;
-using NUnit.Framework;
-using OpenQA.Selenium;
+﻿using NUnit.Framework;
 using STAF.Framework.BaseClasses;
 using STAF.Framework.HelperClasses;
 using STAF.Framework.Pages;
-using System;
-using System.Configuration;
 
 namespace STAF.Tests
 {
@@ -24,20 +20,6 @@ namespace STAF.Tests
             TestStep("Step 1", "Verify page elements.");
             PageClassTemplate.VerifyPageElements();
             TestStep("Step 2", "Verify the page header.");
-        }
-        [Test]
-        public void TestCase_03()
-        {
-            TestStep("Step 1", "Verify page elements.");
-            Assert.AreEqual("Fee Basis Claims System", Instance.FindElement(By.XPath("//h1")).Text.Trim());
-            _test.Pass("<span class=\"label white-text green\">Pass</span>&nbsp Expected result &nbsp<b></b>&nbsp is equal to &nbsp<b></b>&nbsp actual result.", MediaEntityBuilder.CreateScreenCaptureFromPath(AppDomain.CurrentDomain.BaseDirectory + ConfigurationManager.AppSettings["ScreenshotPath"] + ScreenshotHelper.TakeScreenshot()).Build());
-        }
-        [Test]
-        public void TestCase_04()
-        {
-            TestStep("Step 1", "Verify page elements.");
-            Assert.AreEqual("Fee Basis Claims System", Instance.FindElement(By.XPath("//h1")).Text.Trim());
-            _test.Pass("<span class=\"label white-text green\">Pass</span>&nbsp Expected result &nbsp<b></b>&nbsp is equal to &nbsp<b></b>&nbsp actual result.", MediaEntityBuilder.CreateScreenCaptureFromPath(AppDomain.CurrentDomain.BaseDirectory + ConfigurationManager.AppSettings["ScreenshotPath"] + ScreenshotHelper.TakeScreenshot()).Build());
         }
         [Test]
         public void DataDrivenTest()
