@@ -1,7 +1,7 @@
 ﻿using NUnit.Framework;
 using STAF.Framework.BaseClasses;
 using STAF.Framework.HelperClasses;
-using STAF.Framework.Pages;
+using STAF.Pages;
 
 namespace STAF.Tests
 {
@@ -18,7 +18,7 @@ namespace STAF.Tests
         public void TestCase_02()
         {
             TestStep("Step 1", "Verify page elements.");
-            PageClassTemplate.VerifyPageElements();
+            Temp.VerifyPageElements();
             TestStep("Step 2", "Verify the page header.");
         }
         [Test]

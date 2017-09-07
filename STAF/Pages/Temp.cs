@@ -1,9 +1,9 @@
 ﻿using OpenQA.Selenium;
 using STAF.Framework.BaseClasses;
 
-namespace STAF.Framework.Pages
+namespace STAF.Pages
 {
-    class PageClassTemplate
+    class Temp
     {
         #region Elements
         // Page Elements
