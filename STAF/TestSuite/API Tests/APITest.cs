@@ -6,7 +6,7 @@ namespace STAF.TestSuite.API_Tests
     class APITest
     {
         [Test]
-        public void UnitTestCase()
+        public void APITestCase()
         {
         }
     }
