@@ -1,28 +1,14 @@
 ﻿using NUnit.Framework;
 using STAF.Framework.BaseClasses;
 using STAF.Framework.HelperClasses;
-using STAF.Pages;
 
-namespace STAF.Tests
+namespace STAF.TestSuite.Database_Tests
 {
     [TestFixture]
-    class ReportTest : BaseSetup
+    class DataBaseTest : BaseSetup
     {
         [Test]
-        public void TestCase_01()
-        {
-            TestStep("Step 1", "Verify page elements.");
-            TestStep("Step 2", "Verify the page header.");
-        }
-        [Test]
-        public void TestCase_02()
-        {
-            TestStep("Step 1", "Verify page elements.");
-            Temp.VerifyPageElements();
-            TestStep("Step 2", "Verify the page header.");
-        }
-        [Test]
-        public void DataDrivenTest()
+        public void DataBaseTestCase()
         {
             // Step 1
             TestStep(ExcelReader.ReadFrom(1, 1, 2), ExcelReader.ReadFrom(1, 2, 2));
