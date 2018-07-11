@@ -73,14 +73,7 @@
     <Compile Include="Framework\HelperClasses\ReportHelper.cs" />
     <Compile Include="Framework\HelperClasses\ScreenshotHelper.cs" />
     <Compile Include="Framework\HelperClasses\WaitHelper.cs" />
-    <Compile Include="Pages\Temp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestSuite\API Tests\APITest.cs" />
-    <Compile Include="TestSuite\Database Tests\DataBaseTest.cs" />
-    <Compile Include="TestSuite\GUI Tests\GUITest.cs" />
-    <Compile Include="TestSuite\Regression Tests\RegressionTest.cs" />
-    <Compile Include="TestSuite\Unit Tests\UnitTest.cs" />
-    <Compile Include="Workflows\NavigateTo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />

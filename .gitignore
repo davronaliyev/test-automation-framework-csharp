@@ -213,3 +213,4 @@ paket-files/
 __pycache__/
 *.pyc
 /Reports
+/packages
